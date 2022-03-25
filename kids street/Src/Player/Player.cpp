@@ -121,10 +121,15 @@ void CPlayer::Step()
 	
 	//プレイヤーの移動前の座標を記録
 	m_old_pos_ = m_pos_;
-	move_ = { 0 };
+	move_.x = 0.0f;
+	move_.z = 0.0f;
 
 	if(move_flg_ == true)
 	StepInput();
+
+	//前に自動的に進む
+	move_.z += PLAYER_SPD;
+
 
 	//プレイヤーの座標ベクトルを、行列から取得
 	m_pos_ = CMyMath::VecAdd(m_pos_, move_);
@@ -181,49 +186,19 @@ void CPlayer::Fin()
 //入力ステップ
 void CPlayer::StepInput()
 {
-
 	CInput* input = CInput::GetInstance();
 	CRoad* field = CFieldManager::GetInstance()->GetRoad();
 	
-	//--------------------------------
-	//    プレイヤーの移動処理
-	//--------------------------------
-	float add = PLAYER_SPD;	//プレイヤーの移動速度設定
-
 	m_old_pos_ = m_pos_;//処理前座標を保持
 
-	//向きベクトルを求める
-	forward_.x = sinf(m_rot_.y);
-	forward_.z = cosf(m_rot_.y);
-
-	
-	//向いている方向へ移動
-	if (input->IsDown(input->INPUT_KIND_KEY, KEY_INPUT_W))
-	{
-		
-
-		//向きベクトルを適切な大きさに変更して座標に加算
-		m_pos_.x += forward_.x * add;
-		m_pos_.z += forward_.z * add;
-	}
-	
-	//左回転
+	//左移動
 	if (input->IsDown(input->INPUT_KIND_KEY, KEY_INPUT_A))
 	{
-		m_rot_.y -= 0.1f;
+		move_.x -= PLAYER_SPD;
 	}
-	//右回転
+	//右移動
 	if (input->IsDown(input->INPUT_KIND_KEY, KEY_INPUT_D))
 	{
-		m_rot_.y += 0.1f;
+		move_.x += PLAYER_SPD;
 	}
-	//向いている方向とは逆へ移動
-	if (input->IsDown(input->INPUT_KIND_KEY, KEY_INPUT_S))
-	{
-		//向きベクトルを適切な大きさ・向きに変更して座標に加算
-		m_pos_.x -= forward_.x * add;
-		m_pos_.z -= forward_.z * add;
-	}
-
-	
 }

@@ -71,25 +71,6 @@ void CPlayCamera::Step()
 	VECTOR player_rot = player->GetRot();	//回転値を取得
 	VECTOR player_pos = player->GetPos();	//座標を取得
 
-	////----------------------------
-	//// カメラの視点（座標）
-	////----------------------------
-
-	////プレイヤーの向きベクトルを求める
-	//VECTOR player_dir_vec = { 0 };
-	//player_dir_vec.x = sinf(player_rot.y);
-	//player_dir_vec.z = cosf(player_rot.y);
-
-	////求めた向きベクトルを逆向きにして、正しい大きさに変更
-	//player_dir_vec.x *= -CAMERA_OFFSET_POS;
-	//player_dir_vec.z *= -CAMERA_OFFSET_POS;
-
-	////プレイヤーの後方にカメラを設置
-	//m_vPos.x = player_dir_vec.x + player_pos.x;
-	//m_vPos.z = player_dir_vec.z + player_pos.z;
-	//m_vPos.y = 10.0f;
-
-
 	//----------------------------
 	// カメラの注視点
 	//----------------------------
@@ -104,25 +85,6 @@ void CPlayCamera::Step()
 	float stick_x = CInput::GetInstance()->GetStickValue(RIGHT_STICK_X);
 	float stick_y = CInput::GetInstance()->GetStickValue(RIGHT_STICK_Y);
 
-	// WSキーでX軸回転
-	if (input->IsDown(input->INPUT_KIND_KEY, KEY_INPUT_UP)) {
-		cameraInfo.fRotX += CAMERA_ROT_SPEED;
-		if (cameraInfo.fRotX > 2.0f * DX_PI_F)cameraInfo.fRotX -= 2.0f * DX_PI_F;
-	}
-	else if (input->IsDown(input->INPUT_KIND_KEY, KEY_INPUT_DOWN)) {
-		cameraInfo.fRotX -= CAMERA_ROT_SPEED;
-		if (cameraInfo.fRotX < 0)cameraInfo.fRotX += 2.0f * DX_PI_F;
-	}
-
-	// ADキーでY軸回転
-	if (input->IsDown(input->INPUT_KIND_KEY, KEY_INPUT_LEFT)) {
-		cameraInfo.fRotY -= CAMERA_ROT_SPEED;
-		if (cameraInfo.fRotY < 0)cameraInfo.fRotY += 2.0f * DX_PI_F;
-	}
-	else if (input->IsDown(input->INPUT_KIND_KEY, KEY_INPUT_RIGHT)) {
-		cameraInfo.fRotY += CAMERA_ROT_SPEED;
-		if (cameraInfo.fRotY > 2.0f * DX_PI_F)cameraInfo.fRotY -= 2.0f * DX_PI_F;
-	}
 
 	// 注視点を原点に平行移動する行列を作成
 	MATRIX origin_look_mat =
@@ -149,8 +111,6 @@ void CPlayCamera::Step()
 
 	//注視点に行列を掛けてカメラの座標を算出
 	cameraInfo.pos = CMyMath::MatTransform(mult_mat, cameraInfo.look);
-
-	
 }
 
 
