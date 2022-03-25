@@ -8,27 +8,8 @@
 #include "../Input/Pad/Pad.h"
 
 //カメラ関連
-#define CAMERA_OFFSET_Z			(-12.0f)		//カメラの注視点からの手前オフセット値
-#define CAMERA_LOOK_OFFSET_Y	(4.0f)		//カメラの注視点の高さオフセット
-#define CAMERA_ROT_SPEED		(0.052f)	//カメラの回転速度
-
-namespace
-{
-	//カメラの回転スピード
-	const float PLAY_CAMERA_ROTATION = (2.0f * DX_PI_F / 180.0f);
-	//カメラの回転値最大
-	const float PLAY_CAMERA_ROTATION_MAX = (2.0f * DX_PI_F);
-	//カメラのX回転値最大
-	const float PLAY_CAMERA_ROTATION_MAX_X = (20.0f * 2.0f * DX_PI_F / 180.0f);
-	//カメラのX回転値最小
-	const float PLAY_CAMERA_ROTATION_MIN_X = (-10.0f * 2.0f * DX_PI_F / 180.0f);
-
-	//カメラのサイズ
-	const float PLAY_CAMERA_SIZE_H = 1.0f;
-	const float PLAY_CAMERA_SIZE_W = 1.0f;
-	const float PLAY_CAMERA_SIZE_D = 1.0f;
-	const float PLAY_CAMERA_SIZE_R = 1.0f;
-}
+#define CAMERA_OFFSET_Z	(-25.0f)		//カメラの注視点からの手前オフセット値
+#define CAMERA_LOOK_OFFSET_Y (10.0f)	//カメラの注視点の高さオフセット
 
 //コンストラクタ
 CPlayCamera::CPlayCamera()
@@ -68,23 +49,9 @@ void CPlayCamera::Step()
 	//入力操作クラス取得
 	CInput* input = CInput::GetInstance();
 
-	VECTOR player_rot = player->GetRot();	//回転値を取得
-	VECTOR player_pos = player->GetPos();	//座標を取得
-
-	//----------------------------
 	// カメラの注視点
-	//----------------------------
 	cameraInfo.look = player->GetPos();
 	cameraInfo.look.y = player->GetPos().y + CAMERA_LOOK_OFFSET_Y;	//プレイヤーの少し上を見る
-
-	//
-	//カメラの回転
-	//
-
-	//スティックの値を取得
-	float stick_x = CInput::GetInstance()->GetStickValue(RIGHT_STICK_X);
-	float stick_y = CInput::GetInstance()->GetStickValue(RIGHT_STICK_Y);
-
 
 	// 注視点を原点に平行移動する行列を作成
 	MATRIX origin_look_mat =

@@ -51,7 +51,7 @@ public:
 	void Fin();				//後処理
 
 	void StepInput();		//入力ステップ
-	
+	void StepDead();		//死亡処理
 
 public:
 	VECTOR GetPos() { return m_pos_; }											//座標の取得

@@ -26,7 +26,9 @@ namespace
 	const float PLAYER_W = 4.0f;			//プレイヤーの横幅
 	const float PLAYER_H = 4.0f;			//プレイヤーの高さ
 	const float PLAYER_D = 4.0f;			//プレイヤーの奥行き
-	const float PLAYER_R = 2.0f;			//プレイヤーの半径
+	const float PLAYER_R = 4.5f;			//プレイヤーの半径
+
+	const float	 PLAYER_DEAD_MIN_POS_Y = -30.0f;//プレイヤーが死亡する最小Y座標
 
 	//画面範囲関連
 	const float RANGE_MAX_WIDTH = 14.0f;	//横幅の最大範囲
@@ -133,7 +135,7 @@ void CPlayer::Step()
 
 	//プレイヤーの座標ベクトルを、行列から取得
 	m_pos_ = CMyMath::VecAdd(m_pos_, move_);
-	
+	StepDead();//死亡処理
 }
 
 
@@ -200,5 +202,15 @@ void CPlayer::StepInput()
 	if (input->IsDown(input->INPUT_KIND_KEY, KEY_INPUT_D))
 	{
 		move_.x += PLAYER_SPD;
+	}
+}
+
+//死亡処理
+void CPlayer::StepDead()
+{
+	//一定距離落下したら
+	if (m_pos_.y < PLAYER_DEAD_MIN_POS_Y)
+	{
+		is_alive_ = false;//フラグを折る
 	}
 }

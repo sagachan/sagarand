@@ -152,6 +152,9 @@ void CPlayScene::Step()
 	//フィールド管理の更新
 	CFieldManager::GetInstance()->Update();
 
+	//当たり判定
+	CFieldManager::GetInstance()->GetRoad()->CheckCollision();
+
 
 	//====================
 	//カメラ関連
@@ -187,24 +190,24 @@ void CPlayScene::Step()
 	//		シーン切り替え
 	//-------------------------------
 
+	CInput* input = CInput::GetInstance();
+
 	//プレイヤーが死んだらゲームオーバーシーンへ
-	if (CInput::GetInstance()->IsPush(CInput::INPUT_KIND_KEY, KEY_INPUT_BACK))
+	if (input->IsPush(input->INPUT_KIND_KEY, KEY_INPUT_BACK))
 	{
 		//ゲームオーバーシーンへ変更
 		CSceneManager::GetInstance()->ChangeScene(CSceneManager::SCENE_ID_GAME_OVER);
 	}
 
-	////プレイヤーがEnemyを全部倒したら
-	//if (CPlayerManager::GetInstance()->GetPlayer()->GetKill_Count() == ENEMY_MAX_NUM)
-	//{
-	//		//ゲームクリアシーン変更
-	//		CSceneManager::GetInstance()->ChangeScene(CSceneManager::SCENE_ID_GAME_CLEAR);
-	//	
-	//	
-	//}
+	//プレイヤーの状態を取得
+	CPlayer* player_manager = CPlayerManager::GetInstance()->GetPlayer();
 
-	//当たり判定
-	CFieldManager::GetInstance()->GetRoad()->CheckCollision();
+	//プレイヤーの生存フラグが折られていたら
+	if (player_manager->GetAlive_Flg() == false)
+	{
+		//ゲームオーバーシーン変更
+		CSceneManager::GetInstance()->ChangeScene(CSceneManager::SCENE_ID_GAME_OVER);
+	}
 }
 
 
