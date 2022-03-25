@@ -1,0 +1,12 @@
+﻿  Animation.cpp
+  Main.cpp
+  MyMath.cpp
+  Player.cpp
+  PlayerManager.cpp
+  PlayScene.cpp
+  TitleScene.cpp
+  Sound.cpp
+  GameUISprite.cpp
+  コードを生成中...
+  LINK : 前回のインクリメンタル リンクで C:\Users\2009417\Desktop\kids street\Debug\Client.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
+  Client.vcxproj -> C:\Users\2009417\Desktop\kids street\Debug\Client.exe
