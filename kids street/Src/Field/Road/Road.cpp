@@ -29,10 +29,10 @@ CRoad::~CRoad()
 void CRoad::Init()
 {
 	// モデル読み込み
-	mapInfo_.handle = MV1LoadModel("Data/Map/map_1.x");
+	mapInfo_.handle = MV1LoadModel("Data/Map/ground.x");
 
 	// 当たり判定モデル読み込み
-	mapInfo_.col_handle = MV1LoadModel("Data/Map/map_1.x");
+	mapInfo_.col_handle = MV1LoadModel("Data/Map/ground.x");
 
 	// 当たり判定用モデルのポリゴン情報をセットアップ
 	MV1SetupReferenceMesh(mapInfo_.col_handle, -1, TRUE);
@@ -66,8 +66,8 @@ void CRoad::Step()
 void CRoad::Update()
 {
 	//マップの座標
-	MV1SetPosition(mapInfo_.handle, VGet(-20.0f, -1.0f, 0.0f));
-	MV1SetPosition(mapInfo_.col_handle, VGet(-20.0f, -2.0f, 0.0f));
+	MV1SetPosition(mapInfo_.handle, VGet(0.0f, -10.0f, 0.0f));
+	MV1SetPosition(mapInfo_.col_handle, VGet(0.0f, -11.5f, 0.0f));
 	// ポリゴン情報を更新する
 	MV1RefreshReferenceMesh(mapInfo_.col_handle, -1, TRUE);
 }

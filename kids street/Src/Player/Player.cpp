@@ -78,7 +78,7 @@ void CPlayer::Init()
 void CPlayer::Load()
 {
 	//ƒ‚ƒfƒ‹“Ç‚İ‚İ
-	m_hndl_ = MV1LoadModel("Data/Player/Player.x");
+	m_hndl_ = MV1LoadModel("Data/Player/playerBall.x");
 }
 
 
