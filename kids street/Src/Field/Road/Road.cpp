@@ -29,10 +29,10 @@ CRoad::~CRoad()
 void CRoad::Init()
 {
 	// モデル読み込み
-	mapInfo_.handle = MV1LoadModel("Data/Map/map.x");
+	mapInfo_.handle = MV1LoadModel("Data/Map/map_1.x");
 
 	// 当たり判定モデル読み込み
-	mapInfo_.col_handle = MV1LoadModel("Data/Map/map.x");
+	mapInfo_.col_handle = MV1LoadModel("Data/Map/map_1.x");
 
 	// 当たり判定用モデルのポリゴン情報をセットアップ
 	MV1SetupReferenceMesh(mapInfo_.col_handle, -1, TRUE);

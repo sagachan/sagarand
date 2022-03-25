@@ -1,12 +1,32 @@
 ﻿  Animation.cpp
+  model.cpp
+  CameraManager.cpp
+  DebugCamera.cpp
+  PlayCamera.cpp
+  Collision.cpp
+  CollisionManager.cpp
+  FieldManager.cpp
+  Road.cpp
+  Input.cpp
+  Key.cpp
+  Mouse.cpp
+  Pad.cpp
   Main.cpp
   MyMath.cpp
   Player.cpp
   PlayerManager.cpp
+  GameClearScene.cpp
+  GameOverScene.cpp
   PlayScene.cpp
+  コードを生成中...
+  コンパイル中...
+  SceneBase.cpp
+  SceneManager.cpp
   TitleScene.cpp
   Sound.cpp
+  GameUI.cpp
+  GameUIButton.cpp
+  GameUIManager.cpp
   GameUISprite.cpp
   コードを生成中...
-  LINK : 前回のインクリメンタル リンクで C:\Users\2009417\Desktop\kids street\Debug\Client.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
-  Client.vcxproj -> C:\Users\2009417\Desktop\kids street\Debug\Client.exe
+  Client.vcxproj -> C:\Users\2009417\Desktop\GitHub\sagarand\kids street\Debug\Client.exe

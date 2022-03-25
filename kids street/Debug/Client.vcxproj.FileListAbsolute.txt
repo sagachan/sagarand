@@ -10,3 +10,4 @@ E:\ゲーム制作\kids street\Debug\Client.exe
 C:\Users\sagachan\Desktop\2009417_相良匡亮\kids street\Debug\Client.exe
 C:\Users\user\Desktop\2009417_相良匡亮\kids street\Debug\Client.exe
 C:\Users\2009417\Desktop\2009417_相良匡亮\kids street\Debug\Client.exe
+C:\Users\2009417\Desktop\GitHub\sagarand\kids street\Debug\Client.exe
