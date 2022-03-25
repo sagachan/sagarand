@@ -18,6 +18,9 @@ public:
 	void Init();
 	void Init(VECTOR pos, VECTOR look, VECTOR up);
 
+	//セット
+	void Set();
+
 	//毎フレーム呼ぶ処理（操作）
 	void Step();
 

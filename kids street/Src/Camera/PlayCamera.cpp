@@ -39,6 +39,15 @@ void CPlayCamera::Init(VECTOR pos, VECTOR look, VECTOR up)
 	cameraInfo.up = up;
 }
 
+//セット
+void CPlayCamera::Set()
+{
+	//プレイヤーの情報を取得
+	CPlayer* player = CPlayerManager::GetInstance()->GetPlayer();
+	// カメラの注視点
+	cameraInfo.look = player->GetPos();
+	cameraInfo.look.y = player->GetPos().y + CAMERA_LOOK_OFFSET_Y;	//プレイヤーの少し上を見る
+}
 
 //毎フレーム呼ぶ処理（操作）
 void CPlayCamera::Step()
@@ -50,7 +59,7 @@ void CPlayCamera::Step()
 	CInput* input = CInput::GetInstance();
 
 	// カメラの注視点
-	cameraInfo.look = player->GetPos();
+	cameraInfo.look.z = player->GetPos().z;
 	cameraInfo.look.y = player->GetPos().y + CAMERA_LOOK_OFFSET_Y;	//プレイヤーの少し上を見る
 
 	// 注視点を原点に平行移動する行列を作成
