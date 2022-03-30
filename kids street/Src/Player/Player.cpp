@@ -70,8 +70,7 @@ void CPlayer::Init()
 	m_old_pos_ = { 0.0f };			//移動前の座標
 	move_ = { 0.0f };				//移動量
 	m_rot_ = { 0.0f };				//回転値
-	jump_time_ = 0.0f;				//ジャンプの時間
-	hit_flg_ = HIT_INIT_FLG;		//当たり判定フラグ初期化
+
 }
 
 
@@ -89,11 +88,10 @@ void CPlayer::Load()
 void CPlayer::Set()
 {
 	m_pos_ = PLAYER_START_POS;
-	m_radius = PLAYER_R;			//半径
 	state_ = PLAYER_STAND;			//ステータス
-	move_flg_ = true;
 	is_alive_ = true;				//生存フラグ
 	size_ = VGet(PLAYER_W, PLAYER_H, PLAYER_D);
+	m_rad_ = PLAYER_R;
 }
 
 
@@ -126,7 +124,7 @@ void CPlayer::Step()
 	move_.x = 0.0f;
 	move_.z = 0.0f;
 
-	if(move_flg_ == true)
+	
 	StepInput();
 
 	//前に自動的に進む

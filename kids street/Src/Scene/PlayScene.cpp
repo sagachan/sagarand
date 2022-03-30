@@ -175,7 +175,7 @@ void CPlayScene::Step()
 		case CCameraManager::CAMERA_ID_PLAY:
 			camera_manager->ChangeCamera(CCameraManager::CAMERA_ID_DEBUG);
 			//デバッグカメラに、プレイカメラの座標を代入
-			VECTOR play_camera_pos = camera_manager->GetPlayCamera()->GetPos();
+			VECTOR play_camera_pos = camera_manager->GetPlayCamera()->GetPosition();
 			VECTOR play_camera_look = camera_manager->GetPlayCamera()->GetLook();
 			camera_manager->GetDebugCamera()->Init(play_camera_pos, play_camera_look, VGet(0.0f, 1.0f, 0.0f));
 			break;

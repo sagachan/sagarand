@@ -27,7 +27,7 @@ CCameraManager::~CCameraManager()
 void CCameraManager::Init()
 {
 	//ŠeƒJƒƒ‰‚Ì‰Šú‰»
-	m_PlayCamera.Init(VGet(0.0f, 4.0f, -28.0f), CPlayerManager::GetInstance()->GetPlayer()->GetPos(), VGet(0.0f, 1.0f, 0.0f));
+	m_PlayCamera.Init(VGet(0.0f, 4.0f, -28.0f), CPlayerManager::GetInstance()->GetPlayer()->GetPosition(), VGet(0.0f, 1.0f, 0.0f));
 	m_DebugCamera.Init(VGet(0.0f, 8.0f, 0.0f), VGet(0.0f, 0.0f, 0.0f), VGet(0.0f, 1.0f, 0.0f));
 }
 

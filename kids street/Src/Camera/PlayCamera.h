@@ -31,7 +31,7 @@ public:
 	void Fin();
 
 	//À•Wæ“¾
-	VECTOR GetPos() { return cameraInfo.pos; }
+	VECTOR GetPosition() { return cameraInfo.pos; }
 
 	//’‹“_æ“¾
 	VECTOR GetLook() { return cameraInfo.look; }
