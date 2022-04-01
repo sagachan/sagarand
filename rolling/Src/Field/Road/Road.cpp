@@ -154,6 +154,7 @@ void CRoad::CheckCollision()
 
 					//°‚É‚ ‚½‚Á‚Ä‚¢‚é‚©‚ç‹ó’†‚É‚Í‚¢‚È‚¢
 					airFlg_ = false;
+					player->SetJumpFlag(false);
 				}
 			}
 		}

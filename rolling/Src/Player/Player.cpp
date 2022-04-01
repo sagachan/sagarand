@@ -133,7 +133,13 @@ void CPlayer::Step()
 	m_rot_.x += 0.3f;
 	
 	StepInput();
-	StepJump();
+
+	if(jumpFlg_ == false)
+		StepJump();
+	else
+	{
+		move_.y *= 0.9f;
+	}
 
 
 	if (m_pos_.y > JUMP_TOP)
@@ -248,7 +254,9 @@ void CPlayer::StepJump()
 
 		if (dis < FRAME_DIS)
 		{
-			move_.y += PLAYER_SPD;
+			move_.y = 5.0f;
+			jumpFlg_ = true;
+
 		}
 
 	}

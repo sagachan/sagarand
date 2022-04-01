@@ -49,7 +49,7 @@ void CGameOverScene::Init()
 	//”wŒi¶¬
 	CGameUI* bg = ui_manager->CreateUI(CGameUIManager::UI_TYPE_SPRITE);
 	bg->Init(0.0f, 0.0f);
-	bg->Load("Data/Title/gameover.png");
+	bg->Load("Data/Graph/GameOver_BG.png");
 
 	//‰¹‰Šú‰»
 	CSound::InitSound();

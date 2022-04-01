@@ -50,7 +50,7 @@ void CGameClearScene::Init()
 	//”wŒi¶¬
 	CGameUI* bg = ui_manager->CreateUI(CGameUIManager::UI_TYPE_SPRITE);
 	bg->Init(0.0f, 0.0f);
-	bg->Load("Data/Title/gameclear.png");
+	bg->Load("Data/Graph/GameClear_BG.png");
 
 	//‰¹‰Šú‰»
 	CSound::InitSound();
