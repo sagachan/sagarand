@@ -8,10 +8,10 @@ CSound::BGMInfo CSound::bgm[BGM_NUM];
 //BGMのファイルパス
 const char bgm_FilePath[CSound::BGM_NUM][256] =
 {
- "Data/Sound/",  //タイトル時のBGM
- "Data/Sound/",  //プレイ時のBGM
+ "Data/Sound/opening.mp3",  //タイトル時のBGM
+ "Data/Sound/main.mp3",  //プレイ時のBGM
  "Data/Sound/",  //クリア時のBGM
- "Data/Sound/",  //ゲームオーバー時のBGM
+ "Data/Sound/gameover.mp3",  //ゲームオーバー時のBGM
 };
 
 ////効果音のファイルパス
