@@ -8,8 +8,8 @@
 #include "../Input/Pad/Pad.h"
 
 //カメラ関連
-#define CAMERA_OFFSET_Z	(-25.0f)		//カメラの注視点からの手前オフセット値
-#define CAMERA_LOOK_OFFSET_Y (10.0f)	//カメラの注視点の高さオフセット
+#define CAMERA_OFFSET_Z	(-40.0f)		//カメラの注視点からの手前オフセット値
+#define CAMERA_LOOK_OFFSET_Y (15.0f)	//カメラの注視点の高さオフセット
 
 //コンストラクタ
 CPlayCamera::CPlayCamera()

@@ -52,6 +52,7 @@ public:
 
 	void StepInput();		//入力ステップ
 	void StepDead();		//死亡処理
+	void StepJump();		//ジャンプ処理
 
 public:
 	VECTOR GetSize() { return size_; }

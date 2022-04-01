@@ -11,8 +11,8 @@
 namespace
 {
 	//プレイヤー関連
-	const VECTOR PLAYER_START_POS = VGet(0.0f, 1.0f, 250.0f);	//プレイヤーの座標
-	const float PLAYER_SPD = 0.2f;			//プレイヤーの移動速度
+	const VECTOR PLAYER_START_POS = VGet(0.0f, 1.0f, 0.0f);	//プレイヤーの座標
+	const float PLAYER_SPD = 1.0f;			//プレイヤーの移動速度
 	const float PLAYER_ADDSPD = 10.6f;		//白線上プレイヤー速度
 	const float PLAYER_m_rot_SPD = 0.01f;		//プレイヤーの回転速度
 	const float PLAYER_m_rot_RETURN_SPEED = 1.5f; //プレイヤーの回転の戻るスピード
@@ -38,11 +38,14 @@ namespace
 
 	//ジャンプ関連
 	const float ORIGIN_POS = 0.0f;			//原点座標
+	const float JUMP_TOP = 25.0f;			//ジャンプの最高地点
 	const float PLAYER_JUMP_TIME = 0.35f;	//プレイヤーの飛ぶ時間
 	const float PLAYER_JUMP_VAL = 0.0f;		//ジャンプ量
-	const float GRAVITY = 0.3f;				//重力
+	const float GRAVITY = 1.0f;				//重力
 	const float JUMP_CHARGE = 10.0f;		//ジャンプ時の溜め硬直時間
 	const float JUMP_LANDING = 40.0f;		//ジャンプ後の着地硬直時間
+
+	const float FRAME_DIS = 10.0f;
 }
 
 
@@ -118,7 +121,8 @@ void CPlayer::Step()
 {
 	//プレイヤーに常に重力をかける
 	m_pos_.y -= GRAVITY;
-	
+	//m_pos_.y
+
 	//プレイヤーの移動前の座標を記録
 	m_old_pos_ = m_pos_;
 	move_.x = 0.0f;
@@ -126,6 +130,12 @@ void CPlayer::Step()
 
 	
 	StepInput();
+	StepJump();
+	if (m_pos_.y > JUMP_TOP)
+	{
+		move_.y = 0.0f;
+	}
+
 
 	//前に自動的に進む
 	move_.z += PLAYER_SPD;
@@ -211,4 +221,30 @@ void CPlayer::StepDead()
 	{
 		is_alive_ = false;//フラグを折る
 	}
+}
+
+void CPlayer::StepJump()
+{
+	CRoad* field = CFieldManager::GetInstance()->GetRoad();
+
+	//フレームハンドルを取得
+	int frame_handle = field->GetFrameHandle();
+
+	//フレームの数を取得
+	int frame_max = MV1GetFrameNum(frame_handle);
+
+	for(int index = 0; index < frame_max; index++)
+	{
+		VECTOR targetPos = MV1GetFramePosition(frame_handle, index);
+
+		//対象フレームまでの座標を作成
+		float dis = CMyMath::GetDistance(targetPos, m_pos_);
+
+		if (dis < FRAME_DIS)
+		{
+			move_.y += PLAYER_SPD;
+		}
+
+	}
+
 }
