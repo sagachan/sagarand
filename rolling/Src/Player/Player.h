@@ -53,6 +53,7 @@ public:
 	void StepInput();		//入力ステップ
 	void StepDead();		//死亡処理
 	void StepJump();		//ジャンプ処理
+	void StepClearCheck();	//クリアのチェック処理
 
 public:
 	VECTOR GetSize() { return size_; }
@@ -60,7 +61,7 @@ public:
 	VECTOR GetForwardVec() { return forward_; }
 	float GetRad() { return m_rad_; }											//プレイヤーの半径を取得
 	bool GetAlive_Flg() { return is_alive_; }									//プレイヤーの生存フラグをを取得
-	
+	bool GetClearFlag() { return clear_flag_; }									//クリアフラグを取得する
 	
 	
 private:
@@ -73,6 +74,8 @@ private:
 	bool			hitFlg_;			//別クラス当たり判定フラグ
 	bool			jumpFlg_;
 	float			jumpTime_;			//ジャンプの時間
+	bool			clear_flag_;		//クリアフラグ
+
 	PLAYER_ANIM_STATE	state_;			//状態（ステータス）
 	PLAYER_ANIM_STATE	old_state_;		//前ループ状態（ステータス）
 	

@@ -35,7 +35,10 @@ void CRoad::Init()
 	mapInfo_.col_handle = MV1LoadModel("Data/Map/mapMesh.x");
 
 	//フレームモデルハンドル
-	mapInfo_.frame_hamdle = MV1LoadModel("Data/Map/mapBorn.x");
+	mapInfo_.frame_handle = MV1LoadModel("Data/Map/mapBorn.x");
+
+	mapInfo_.frame_clear_handle = MV1LoadModel("Data/Map/map1ClearBone.x");
+
 
 	// 当たり判定用モデルのポリゴン情報をセットアップ
 	MV1SetupReferenceMesh(mapInfo_.col_handle, -1, TRUE);

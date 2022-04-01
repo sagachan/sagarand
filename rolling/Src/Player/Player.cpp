@@ -73,7 +73,7 @@ void CPlayer::Init()
 	m_old_pos_ = { 0.0f };			//移動前の座標
 	move_ = { 0.0f };				//移動量
 	m_rot_ = { 0.0f };				//回転値
-
+	clear_flag_ = false;
 }
 
 
@@ -95,6 +95,7 @@ void CPlayer::Set()
 	is_alive_ = true;				//生存フラグ
 	size_ = VGet(PLAYER_W, PLAYER_H, PLAYER_D);
 	m_rad_ = PLAYER_R;
+	m_rot_ = { 0.0f, 0.2f, 0.0f };
 }
 
 
@@ -119,6 +120,8 @@ void CPlayer::HitSet()
 //毎フレーム呼ぶ処理（操作）
 void CPlayer::Step()
 {
+	StepClearCheck();
+
 	//プレイヤーに常に重力をかける
 	m_pos_.y -= GRAVITY;
 	//m_pos_.y
@@ -127,10 +130,12 @@ void CPlayer::Step()
 	m_old_pos_ = m_pos_;
 	move_.x = 0.0f;
 	move_.z = 0.0f;
-
+	m_rot_.x += 0.3f;
 	
 	StepInput();
 	StepJump();
+
+
 	if (m_pos_.y > JUMP_TOP)
 	{
 		move_.y = 0.0f;
@@ -210,6 +215,7 @@ void CPlayer::StepInput()
 	if (input->IsDown(input->INPUT_KIND_KEY, KEY_INPUT_D))
 	{
 		move_.x += PLAYER_SPD;
+
 	}
 }
 
@@ -243,6 +249,32 @@ void CPlayer::StepJump()
 		if (dis < FRAME_DIS)
 		{
 			move_.y += PLAYER_SPD;
+		}
+
+	}
+
+}
+
+void CPlayer::StepClearCheck()
+{
+	CRoad* field = CFieldManager::GetInstance()->GetRoad();
+
+	//フレームハンドルを取得
+	int frame_clear_handle = field->GetFrameClearHandle();
+
+	//フレームの数を取得
+	int frame_max = MV1GetFrameNum(frame_clear_handle);
+
+	for (int index = 0; index < frame_max; index++)
+	{
+		VECTOR targetPos = MV1GetFramePosition(frame_clear_handle, index);
+
+		//対象フレームまでの座標を作成
+		float dis = CMyMath::GetDistance(targetPos, m_pos_);
+
+		if (dis < FRAME_DIS)
+		{
+			clear_flag_ = true;
 		}
 
 	}

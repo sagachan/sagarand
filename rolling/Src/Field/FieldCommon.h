@@ -7,6 +7,7 @@ struct MapInfo
 {
 	int handle;						//画像ハンドル
 	int col_handle;					//当たり判定用モデルハンドル
-	int frame_hamdle;				//フレームモデルハンドル
+	int frame_handle;				//フレームモデルハンドル
+	int frame_clear_handle;			//クリアフレームモデルハンドル
 	VECTOR pos;						//座標
 };

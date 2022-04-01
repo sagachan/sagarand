@@ -28,7 +28,8 @@ public:
 public:
 	void	CheckCollision();							//当たり判定計算
 	bool	Is_in_Air() { return airFlg_; }			//今現在空中にいるかどうか、当たっていないかどうかを返す
-	int		GetFrameHandle() { return mapInfo_.frame_hamdle; }//フレームモデルハンドルを取得
+	int		GetFrameHandle() { return mapInfo_.frame_handle; }//フレームモデルハンドルを取得
+	int		GetFrameClearHandle() {return mapInfo_.frame_clear_handle;}//クリアフレームモデルを取得
 
 private:
 	MapInfo					mapInfo_;

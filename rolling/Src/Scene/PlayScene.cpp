@@ -92,12 +92,13 @@ void CPlayScene::Init()
 
 //読み込み
 void CPlayScene::Load()
-{
+{	
+	//フィールド管理読み込み
+	CFieldManager::GetInstance()->Load();
+
 	//プレイヤー管理読み込み
 	CPlayerManager::GetInstance()->Load();
 
-	//フィールド管理読み込み
-	CFieldManager::GetInstance()->Load();
 
 	//音読み込み
 	CSound::LoadBGM(CSound::BGM_PLAY);
@@ -106,12 +107,13 @@ void CPlayScene::Load()
 
 //各変数などの初期値を設定
 void CPlayScene::Set()
-{
+{	
+	//フィールド管理セット
+	CFieldManager::GetInstance()->Set();
+
 	//プレイヤー管理セット
 	CPlayerManager::GetInstance()->Set();
 	
-	//フィールド管理セット
-	CFieldManager::GetInstance()->Set();
 
 	//音再生
 	CSound::PlayBGM(CSound::BGM_PLAY);
@@ -142,15 +144,15 @@ void CPlayScene::Step()
 	//当たり判定管理ステップ
 	CCollisionManager::GetInstance()->Step();
 
-	
+	//フィールド管理の更新
+	CFieldManager::GetInstance()->Update();
+
 	//更新
 	//プレイヤー管理の更新
 	CPlayerManager::GetInstance()->Update();
 
 	
 
-	//フィールド管理の更新
-	CFieldManager::GetInstance()->Update();
 
 	//当たり判定
 	CFieldManager::GetInstance()->GetRoad()->CheckCollision();
@@ -207,6 +209,14 @@ void CPlayScene::Step()
 	{
 		//ゲームオーバーシーン変更
 		CSceneManager::GetInstance()->ChangeScene(CSceneManager::SCENE_ID_GAME_OVER);
+	}
+
+	//クリアフラグが立っていたら
+	if (player_manager->GetClearFlag())
+	{
+		//ゲームクリア変更
+		CSceneManager::GetInstance()->ChangeScene(CSceneManager::SCENE_ID_GAME_CLEAR);
+
 	}
 }
 
