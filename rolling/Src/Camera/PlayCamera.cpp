@@ -60,7 +60,7 @@ void CPlayCamera::Step()
 
 	// カメラの注視点
 	cameraInfo.look.z = player->GetPosition().z;
-	cameraInfo.look.y = player->GetPosition().y + CAMERA_LOOK_OFFSET_Y;	//プレイヤーの少し上を見る
+	cameraInfo.look.y = CAMERA_LOOK_OFFSET_Y;	//プレイヤーの少し上を見る
 
 	// 注視点を原点に平行移動する行列を作成
 	MATRIX origin_look_mat =

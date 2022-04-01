@@ -11,7 +11,7 @@
 namespace
 {
 	//プレイヤー関連
-	const VECTOR PLAYER_START_POS = VGet(5.0f, 1.0f, 250.0f);	//プレイヤーの座標
+	const VECTOR PLAYER_START_POS = VGet(0.0f, 1.0f, 250.0f);	//プレイヤーの座標
 	const float PLAYER_SPD = 0.2f;			//プレイヤーの移動速度
 	const float PLAYER_ADDSPD = 10.6f;		//白線上プレイヤー速度
 	const float PLAYER_m_rot_SPD = 0.01f;		//プレイヤーの回転速度
