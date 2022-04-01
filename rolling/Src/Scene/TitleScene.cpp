@@ -48,7 +48,7 @@ void CTitleScene::Init()
 	//”wŒi¶¬
 	CGameUI* bg = ui_manager->CreateUI(CGameUIManager::UI_TYPE_SPRITE);
 	bg->Init(0.0f, 0.0f);
-	bg->Load("Data/Title/openning.jpg");
+	bg->Load("Data/Title/opening.jpg");
 
 	//‰¹‰Šú‰»
 	CSound::InitSound();
