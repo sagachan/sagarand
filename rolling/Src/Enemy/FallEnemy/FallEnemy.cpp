@@ -9,6 +9,8 @@ namespace
 	const float MAP_FLOOR_NORM_Y(0.1f);	//法線のY成分がこの値以上であれば床
 	const float MAP_CEIL_NORM_Y(-0.9f);	//法線のY成分がこの値以上であれば床
 	const float MAP_WALL_NORM_Z(0.5f);	//法線のZ成分がこの値以上であれば壁
+	const float	ENEMY_FALL_SPD = 1.5f;	//エネミーの落ちる速度
+	const float ENEMY_UP_SPD = 0.3f;	//エネミーの上がる速度
 }
 
 //コンストラクタ
@@ -54,6 +56,7 @@ void CFallEnemy::Load()
 void CFallEnemy::Set(VECTOR pos)
 {
 	MV1SetPosition(enemyInfo_.handle, pos);
+	enemyInfo_.pos = pos;
 	fallFlg_ = true;
 }
 
@@ -61,14 +64,14 @@ void CFallEnemy::Set(VECTOR pos)
 //ステップ
 void CFallEnemy::Step()
 {
-
+	Fall();
 }
 
 
 //更新
 void CFallEnemy::Update()
 {
-	
+	MV1SetPosition(enemyInfo_.handle, enemyInfo_.pos);
 	// ポリゴン情報を更新する
 	MV1RefreshReferenceMesh(enemyInfo_.col_handle, -1, TRUE);
 }
@@ -94,7 +97,7 @@ void CFallEnemy::Fin()
 	MV1DeleteModel(enemyInfo_.col_handle);
 }
 
-void CFallEnemy::FallEnemy() 
+void CFallEnemy::Fall() 
 {
 	//エネミーを落とす処理
 
@@ -103,11 +106,19 @@ void CFallEnemy::FallEnemy()
 
 	if (fallFlg_)
 	{
-		
+		enemyInfo_.pos.y -= ENEMY_FALL_SPD;
+		if (enemyInfo_.pos.y < endPos_.y)
+		{
+			fallFlg_ = false;
+		}
 	}
 	else if (!fallFlg_)
 	{
-
+		enemyInfo_.pos.y += ENEMY_UP_SPD;
+		if (enemyInfo_.pos.y > startPos_.y)
+		{
+			fallFlg_ = true;
+		}
 	}
 }
 

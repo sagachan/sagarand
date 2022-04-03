@@ -26,7 +26,7 @@ public:
 	void	CheckCollision();							//当たり判定計算
 	int		GetFrameHandle() { return enemyInfo_.frame_handle; }//フレームモデルハンドルを取得
 	void	SetStartEndPos(VECTOR start, VECTOR end) { startPos_ = start; endPos_ = end; }
-	void	FallEnemy();
+	void	Fall();
 	
 
 private:

@@ -162,6 +162,9 @@ void CPlayScene::Step()
 	//フィールド管理の更新
 	CFieldManager::GetInstance()->Update();
 
+	//エネミー管理の更新
+	CEnemyManager::GetInstance()->Update();
+
 	//更新
 	//プレイヤー管理の更新
 	CPlayerManager::GetInstance()->Update();
