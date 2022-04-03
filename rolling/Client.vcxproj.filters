@@ -58,6 +58,12 @@
     <Filter Include="Src\Field\BackGround">
       <UniqueIdentifier>{70d6e959-41cb-48ca-af21-a43fdc9117b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Enemy">
+      <UniqueIdentifier>{370f7104-6512-4716-a0e0-01896bba3203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Enemy\FallEnemy">
+      <UniqueIdentifier>{de402cc4-5c7b-4ba9-8334-11ae36696e78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Camera\CameraManager.cpp">
@@ -149,6 +155,12 @@
     </ClCompile>
     <ClCompile Include="Src\Field\BackGround\BackGround.cpp">
       <Filter>Src\Field\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Enemy\EnemyManager.cpp">
+      <Filter>Src\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Enemy\FallEnemy\FallEnemy.cpp">
+      <Filter>Src\Enemy\FallEnemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +259,15 @@
     </ClInclude>
     <ClInclude Include="Src\Field\BackGround\BackGround.h">
       <Filter>Src\Field\BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Enemy\EnemyManager.h">
+      <Filter>Src\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Enemy\FallEnemy\FallEnemy.h">
+      <Filter>Src\Enemy\FallEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Enemy\EnemyCommon.h">
+      <Filter>Src\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

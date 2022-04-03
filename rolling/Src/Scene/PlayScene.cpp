@@ -6,6 +6,7 @@
 #include "../Camera/CameraManager.h"
 #include "../Player/PlayerManager.h"
 #include "../Field/FieldManager.h"
+#include "../Enemy/EnemyManager.h"
 #include "../Input/Input.h"
 #include "../Sound/Sound.h"
 #include "../MyMath/MyMath.h"
@@ -37,6 +38,7 @@ void CPlayScene::Init()
 	//マネージャー初期化
 	player_manager->Init();
 
+
 	
 	
 
@@ -48,6 +50,11 @@ void CPlayScene::Init()
 	CFieldManager::CreateInstance();
 	CFieldManager* field_manager = CFieldManager::GetInstance();
 	field_manager->Init();
+
+	//エネミー管理初期化
+	CEnemyManager::CreateInstance();
+	CEnemyManager* enemy_manager = CEnemyManager::GetInstance();
+	enemy_manager->Init();
 
 
 	//カメラ管理初期化
@@ -99,6 +106,9 @@ void CPlayScene::Load()
 	//プレイヤー管理読み込み
 	CPlayerManager::GetInstance()->Load();
 
+	//エネミー管理読み込み
+	CEnemyManager::GetInstance()->Load();
+
 
 	//音読み込み
 	CSound::LoadBGM(CSound::BGM_PLAY);
@@ -114,6 +124,8 @@ void CPlayScene::Set()
 	//プレイヤー管理セット
 	CPlayerManager::GetInstance()->Set();
 	
+	//エネミー管理セット
+	CEnemyManager::GetInstance()->Set();
 
 	//音再生
 	CSound::PlayBGM(CSound::BGM_PLAY);
@@ -140,6 +152,9 @@ void CPlayScene::Step()
 	
 	//フィールド管理ステップ
 	CFieldManager::GetInstance()->Step();
+
+	//エネミー管理ステップ
+	CEnemyManager::GetInstance()->Step();
 
 	//当たり判定管理ステップ
 	CCollisionManager::GetInstance()->Step();
@@ -234,6 +249,9 @@ void CPlayScene::Draw()
 	CPlayerManager::GetInstance()->Draw();
 
 
+	//エネミー管理描画
+	CEnemyManager::GetInstance()->Draw();
+
 
 	//カメラ管理描画
 	CCameraManager::GetInstance()->Draw();
@@ -258,6 +276,12 @@ void CPlayScene::Fin()
 	field_manager->Delete();
 	field_manager->Fin();
 	CFieldManager::DeleteInstance();
+
+	//エネミー管理の後処理
+	CEnemyManager* enemy_manager = CEnemyManager::GetInstance();
+	enemy_manager->Delete();
+	enemy_manager->Fin();
+	CEnemyManager::DeleteInstance();
 
 
 	//カメラの後処理
