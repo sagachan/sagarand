@@ -28,6 +28,7 @@
     <ClCompile Include="Src\Collision\CollisionManager.cpp" />
     <ClCompile Include="Src\Field\FieldManager.cpp" />
     <ClCompile Include="Src\Field\Road\Road.cpp" />
+    <ClCompile Include="Src\Field\Wall\Wall.cpp" />
     <ClCompile Include="Src\Input\Input.cpp" />
     <ClCompile Include="Src\Input\Key\Key.cpp" />
     <ClCompile Include="Src\Input\Mouse\Mouse.cpp" />
@@ -60,6 +61,7 @@
     <ClInclude Include="Src\Field\FieldCommon.h" />
     <ClInclude Include="Src\Field\FieldManager.h" />
     <ClInclude Include="Src\Field\Road\Road.h" />
+    <ClInclude Include="Src\Field\Wall\Wall.h" />
     <ClInclude Include="Src\Input\Input.h" />
     <ClInclude Include="Src\Input\InputBase.h" />
     <ClInclude Include="Src\Input\Key\Key.h" />
@@ -90,7 +92,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

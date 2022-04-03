@@ -52,6 +52,9 @@
     <Filter Include="Src\Field\Road">
       <UniqueIdentifier>{5bab4669-ec46-4cbd-a52c-f58ad4add3c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Field\Wall">
+      <UniqueIdentifier>{aeaedd0e-f900-4e4f-bd20-3f7ab3aec8a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Camera\CameraManager.cpp">
@@ -137,6 +140,9 @@
     </ClCompile>
     <ClCompile Include="Src\Field\Road\Road.cpp">
       <Filter>Src\Field\Road</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Field\Wall\Wall.cpp">
+      <Filter>Src\Field\Wall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +235,9 @@
     </ClInclude>
     <ClInclude Include="Src\Field\Road\Road.h">
       <Filter>Src\Field\Road</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Field\Wall\Wall.h">
+      <Filter>Src\Field\Wall</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
