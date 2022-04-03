@@ -62,7 +62,8 @@ public:
 	float GetRad() { return m_rad_; }											//プレイヤーの半径を取得
 	bool GetAlive_Flg() { return is_alive_; }									//プレイヤーの生存フラグをを取得
 	bool GetClearFlag() { return clear_flag_; }									//クリアフラグを取得する
-	bool SetJumpFlag(bool flag) { return jumpFlg_ = flag; }
+	bool SetJumpFlag(bool flg) { return jumpFlg_ = flg; }
+	void SetAlive_Flg(bool flg) { is_alive_ = flg; }
 	
 private:
 	VECTOR			move_;				//移動量

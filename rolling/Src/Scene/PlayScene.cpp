@@ -156,6 +156,7 @@ void CPlayScene::Step()
 
 	//“–‚½‚è”»’è
 	CFieldManager::GetInstance()->GetRoad()->CheckCollision();
+	CFieldManager::GetInstance()->GetWall()->CheckCollision();
 
 
 	//====================

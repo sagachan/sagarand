@@ -19,6 +19,7 @@ CFieldManager::~CFieldManager()
 void CFieldManager::Init()
 {
 	road_.Init();
+	wall_.Init();
 }
 
 
@@ -26,6 +27,7 @@ void CFieldManager::Init()
 void CFieldManager::Load()
 {
 	road_.Load();
+	wall_.Load();
 }
 
 
@@ -34,6 +36,7 @@ void CFieldManager::Load()
 void CFieldManager::Set()
 {
 	road_.Set();
+	wall_.Set();
 }
 
 
@@ -41,6 +44,7 @@ void CFieldManager::Set()
 void CFieldManager::Step()
 {
 	road_.Step();
+	wall_.Step();
 }
 
 
@@ -49,7 +53,7 @@ void CFieldManager::Update()
 {
 	
 	road_.Update();
-	
+	wall_.Update();
 }
 
 
@@ -58,7 +62,7 @@ void CFieldManager::Draw()
 {
 	
 	road_.Draw();
-	
+	wall_.Draw();
 }
 
 
@@ -67,6 +71,7 @@ void CFieldManager::Delete()
 {
 	
 	road_.Delete();
+	wall_.Delete();
 }
 
 
@@ -74,5 +79,6 @@ void CFieldManager::Delete()
 void CFieldManager::Fin()
 {
 	road_.Fin();
+	wall_.Fin();
 }
 
