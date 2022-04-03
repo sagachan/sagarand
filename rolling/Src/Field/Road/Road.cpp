@@ -34,6 +34,8 @@ void CRoad::Init()
 	// 当たり判定モデル読み込み
 	mapInfo_.col_handle = MV1LoadModel("Data/Map/mapMesh.x");
 
+	hndl_ = MV1LoadModel("Data/Map/Sky.x");
+
 	//フレームモデルハンドル
 	mapInfo_.frame_handle = MV1LoadModel("Data/Map/mapBorn.x");
 
@@ -74,6 +76,7 @@ void CRoad::Update()
 	//マップの座標
 	MV1SetPosition(mapInfo_.handle, VGet(0.0f, -10.0f, 0.0f));
 	MV1SetPosition(mapInfo_.col_handle, VGet(0.0f, -11.5f, 0.0f));
+	MV1SetPosition(hndl_, VGet(0.0f, -10.0f, 0.0f));
 	// ポリゴン情報を更新する
 	MV1RefreshReferenceMesh(mapInfo_.col_handle, -1, TRUE);
 }
@@ -83,6 +86,7 @@ void CRoad::Update()
 void CRoad::Draw()
 {
 	MV1DrawModel(mapInfo_.handle);
+	MV1DrawModel(hndl_);
 }
 
 
