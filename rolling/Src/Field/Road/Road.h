@@ -34,5 +34,4 @@ public:
 private:
 	MapInfo					mapInfo_;
 	bool					airFlg_;
-	int						hndl_;
 };
