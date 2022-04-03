@@ -55,6 +55,9 @@
     <Filter Include="Src\Field\Wall">
       <UniqueIdentifier>{aeaedd0e-f900-4e4f-bd20-3f7ab3aec8a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Field\BackGround">
+      <UniqueIdentifier>{70d6e959-41cb-48ca-af21-a43fdc9117b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Camera\CameraManager.cpp">
@@ -143,6 +146,9 @@
     </ClCompile>
     <ClCompile Include="Src\Field\Wall\Wall.cpp">
       <Filter>Src\Field\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Field\BackGround\BackGround.cpp">
+      <Filter>Src\Field\BackGround</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +244,9 @@
     </ClInclude>
     <ClInclude Include="Src\Field\Wall\Wall.h">
       <Filter>Src\Field\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Field\BackGround\BackGround.h">
+      <Filter>Src\Field\BackGround</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

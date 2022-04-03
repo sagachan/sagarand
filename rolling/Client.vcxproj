@@ -26,6 +26,7 @@
     <ClCompile Include="Src\Camera\PlayCamera.cpp" />
     <ClCompile Include="Src\Collision\Collision.cpp" />
     <ClCompile Include="Src\Collision\CollisionManager.cpp" />
+    <ClCompile Include="Src\Field\BackGround\BackGround.cpp" />
     <ClCompile Include="Src\Field\FieldManager.cpp" />
     <ClCompile Include="Src\Field\Road\Road.cpp" />
     <ClCompile Include="Src\Field\Wall\Wall.cpp" />
@@ -58,6 +59,7 @@
     <ClInclude Include="Src\Collision\Collision.h" />
     <ClInclude Include="Src\Collision\CollisionManager.h" />
     <ClInclude Include="Src\Common.h" />
+    <ClInclude Include="Src\Field\BackGround\BackGround.h" />
     <ClInclude Include="Src\Field\FieldCommon.h" />
     <ClInclude Include="Src\Field\FieldManager.h" />
     <ClInclude Include="Src\Field\Road\Road.h" />
