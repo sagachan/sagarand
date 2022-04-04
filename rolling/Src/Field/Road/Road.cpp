@@ -12,6 +12,9 @@ namespace
 	const float MAP_FLOOR_NORM_Y(0.1f);	//法線のY成分がこの値以上であれば床
 	const float MAP_CEIL_NORM_Y(-0.9f);	//法線のY成分がこの値以上であれば床
 	const float MAP_WALL_NORM_Z(0.5f);	//法線のZ成分がこの値以上であれば壁
+
+	/*const VECTOR MAP_POS = VGet(0.0f, -10.0f, 0.0f);*/
+	const VECTOR MAP_COL_POS = VGet(0.0f, -11.5f, 0.0f);
 }
 
 //コンストラクタ
@@ -58,6 +61,9 @@ void CRoad::Load()
 //セット
 void CRoad::Set()
 {
+	//マップの座標
+	MV1SetPosition(mapInfo_.handle, MAP_POS);
+	MV1SetPosition(mapInfo_.col_handle, MAP_COL_POS);
 }
 
 
@@ -71,9 +77,8 @@ void CRoad::Step()
 //更新
 void CRoad::Update()
 {
-	//マップの座標
-	MV1SetPosition(mapInfo_.handle, VGet(0.0f, -10.0f, 0.0f));
-	MV1SetPosition(mapInfo_.col_handle, VGet(0.0f, -11.5f, 0.0f));
+	
+
 	// ポリゴン情報を更新する
 	MV1RefreshReferenceMesh(mapInfo_.col_handle, -1, TRUE);
 }

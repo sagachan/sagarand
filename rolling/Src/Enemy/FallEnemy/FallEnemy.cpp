@@ -9,8 +9,8 @@ namespace
 	const float MAP_FLOOR_NORM_Y(0.1f);	//法線のY成分がこの値以上であれば床
 	const float MAP_CEIL_NORM_Y(-0.9f);	//法線のY成分がこの値以上であれば床
 	const float MAP_WALL_NORM_Z(0.5f);	//法線のZ成分がこの値以上であれば壁
-	const float	ENEMY_FALL_SPD = 1.5f;	//エネミーの落ちる速度
-	const float ENEMY_UP_SPD = 0.3f;	//エネミーの上がる速度
+	const float	ENEMY_FALL_SPD = 2.0f;	//エネミーの落ちる速度
+	const float ENEMY_UP_SPD = 0.1f;	//エネミーの上がる速度
 }
 
 //コンストラクタ
@@ -65,6 +65,7 @@ void CFallEnemy::Set(VECTOR pos)
 void CFallEnemy::Step()
 {
 	Fall();
+	CheckCollision();
 }
 
 
@@ -72,6 +73,7 @@ void CFallEnemy::Step()
 void CFallEnemy::Update()
 {
 	MV1SetPosition(enemyInfo_.handle, enemyInfo_.pos);
+	MV1SetPosition(enemyInfo_.col_handle, enemyInfo_.pos);
 	// ポリゴン情報を更新する
 	MV1RefreshReferenceMesh(enemyInfo_.col_handle, -1, TRUE);
 }
@@ -167,11 +169,10 @@ void CFallEnemy::CheckCollision()
 				float player_bottom = player->GetPosition().y - player->GetRad();
 				// 床から足元までの距離を計算
 				float dist = player_bottom - floor_height;
-				// 足元の方が低い かつ 足元と床との距離が離れすぎていなければ押し上げる
+				// 足元の方が低い かつ 足元と床との距離が離れすぎていないか
 				if (dist < 0.0f && CMyMath::Abs(dist) <= player->GetRad()) {
-					VECTOR pos = player->GetPosition();
-					pos.y = floor_height + player->GetRad();
-					player->Set(pos);
+					//壁に当たるとゲームオーバー
+					CPlayerManager::GetInstance()->GetPlayer()->SetAlive_Flg(false);
 
 				}
 			}
@@ -186,11 +187,10 @@ void CFallEnemy::CheckCollision()
 				float player_top = player->GetPosition().y + player->GetRad();
 				// 天井から脳天までの距離を計算
 				float dist = player_top - ceil_height;
-				// 脳天の方が高い かつ 脳天と天井との距離が離れすぎていなければ押し下げる
+				// 脳天の方が高い かつ 脳天と天井との距離が離れすぎていないか
 				if (dist > 0.0f && CMyMath::Abs(dist) <= player->GetRad()) {
-					VECTOR pos = player->GetPosition();
-					pos.y = ceil_height - player->GetRad();
-					player->Set(pos);
+					//壁に当たるとゲームオーバー
+					CPlayerManager::GetInstance()->GetPlayer()->SetAlive_Flg(false);
 				}
 			}
 		}
@@ -210,11 +210,8 @@ void CFallEnemy::CheckCollision()
 					if (CMyMath::Abs(dist) <= player->GetRad()) {
 						// 法線の向きに気を付けてめり込んでいるかチェックする
 						if ((norm.z < 0.0f && dist > 0.0f) || (norm.z > 0.0f && dist < 0.0f)) {
-							// 法線の方向にめり込んでいる分だけ押し出す
-							VECTOR push = CMyMath::VecScale(norm, CMyMath::Abs(dist));
-							VECTOR pos = player->GetPosition();
-							pos = CMyMath::VecAdd(player->GetPosition(), push);
-							player->Set(pos);
+							//壁に当たるとゲームオーバー
+							CPlayerManager::GetInstance()->GetPlayer()->SetAlive_Flg(false);
 						}
 					}
 				}
@@ -231,11 +228,8 @@ void CFallEnemy::CheckCollision()
 					if (CMyMath::Abs(dist) <= player->GetRad()) {
 						// 法線の向きに気を付けてめり込んでいるかチェックする
 						if ((norm.x < 0.0f && dist > 0.0f) || (norm.x > 0.0f && dist < 0.0f)) {
-							// 法線の方向にめり込んでいる分だけ押し出す
-							VECTOR push = CMyMath::VecScale(norm, CMyMath::Abs(dist));
-							VECTOR pos = player->GetPosition();
-							pos = CMyMath::VecAdd(player->GetPosition(), push);
-							player->Set(pos);
+							//壁に当たるとゲームオーバー
+							CPlayerManager::GetInstance()->GetPlayer()->SetAlive_Flg(false);
 						}
 					}// if (MyMath::Abs(dist) <= PLAYER_RAD)
 				}// if (CCollision::IsHitTriangleYZ(player_info_.pos, vertexs[0], vertexs[1], vertexs[2]))

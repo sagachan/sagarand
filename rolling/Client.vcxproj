@@ -28,9 +28,9 @@
     <ClCompile Include="Src\Collision\CollisionManager.cpp" />
     <ClCompile Include="Src\Enemy\EnemyManager.cpp" />
     <ClCompile Include="Src\Enemy\FallEnemy\FallEnemy.cpp" />
-    <ClCompile Include="Src\Field\BackGround\BackGround.cpp" />
     <ClCompile Include="Src\Field\FieldManager.cpp" />
     <ClCompile Include="Src\Field\Road\Road.cpp" />
+    <ClCompile Include="Src\Field\Sky\Sky.cpp" />
     <ClCompile Include="Src\Field\Wall\Wall.cpp" />
     <ClCompile Include="Src\Input\Input.cpp" />
     <ClCompile Include="Src\Input\Key\Key.cpp" />
@@ -64,10 +64,10 @@
     <ClInclude Include="Src\Enemy\EnemyCommon.h" />
     <ClInclude Include="Src\Enemy\EnemyManager.h" />
     <ClInclude Include="Src\Enemy\FallEnemy\FallEnemy.h" />
-    <ClInclude Include="Src\Field\BackGround\BackGround.h" />
     <ClInclude Include="Src\Field\FieldCommon.h" />
     <ClInclude Include="Src\Field\FieldManager.h" />
     <ClInclude Include="Src\Field\Road\Road.h" />
+    <ClInclude Include="Src\Field\Sky\Sky.h" />
     <ClInclude Include="Src\Field\Wall\Wall.h" />
     <ClInclude Include="Src\Input\Input.h" />
     <ClInclude Include="Src\Input\InputBase.h" />

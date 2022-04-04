@@ -61,7 +61,7 @@ void CPlayScene::Init()
 	CCameraManager::CreateInstance();
 	CCameraManager* camera_manager = CCameraManager::GetInstance();
 	camera_manager->Init();
-	camera_manager->SetNearFar(2.0f, 1500.0f);	//ニアファー設定
+	camera_manager->SetNearFar(2.0f, 3000.0f);	//ニアファー設定
 
 	//プレイカメラに変更
 	camera_manager->ChangeCamera(CCameraManager::CAMERA_ID_PLAY);

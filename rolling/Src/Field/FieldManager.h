@@ -7,6 +7,7 @@
 #include "Road/Road.h"
 #include "FieldCommon.h"
 #include "Wall/Wall.h"
+#include "Sky/Sky.h"
 
 class CFieldManager
 {
@@ -34,10 +35,12 @@ public:
 	//クラス取得関連関数
 	CRoad* GetRoad()		{ return &road_; }
 	CWall* GetWall()		{ return &wall_; }
+	CSky* GetSky()			{ return &sky_; }
+
 
 private:
 	static CFieldManager*	instance_;
 	CRoad					road_;								//道クラス
 	CWall					wall_;								//壁クラス
-
+	CSky					sky_;								//空クラス
 };

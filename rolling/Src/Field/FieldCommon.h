@@ -11,3 +11,5 @@ struct MapInfo
 	int frame_clear_handle;			//クリアフレームモデルハンドル
 	VECTOR pos;						//座標
 };
+
+#define MAP_POS VGet(0.0f, -10.0f, 0.0f)
