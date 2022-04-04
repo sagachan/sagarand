@@ -34,4 +34,7 @@ public:
 private:
 	MapInfo					mapInfo_;
 	bool					airFlg_;
+	float					field_dist_;
+	VECTOR					goal_pos_;
+	int						percent_;
 };

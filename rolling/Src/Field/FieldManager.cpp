@@ -65,9 +65,10 @@ void CFieldManager::Update()
 void CFieldManager::Draw()
 {
 	
-	road_.Draw();
 	wall_.Draw();
-	sky_.Draw();
+	sky_.Draw();	
+	road_.Draw();
+
 }
 
 

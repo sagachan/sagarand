@@ -22,6 +22,8 @@ CRoad::CRoad()
 {
 	airFlg_ = false;
 	mapInfo_ = { 0 };
+	field_dist_ = 0.0f;
+	goal_pos_ = ZERO_VECTOR;
 }
 
 //デストラクタ
@@ -64,13 +66,20 @@ void CRoad::Set()
 	//マップの座標
 	MV1SetPosition(mapInfo_.handle, MAP_POS);
 	MV1SetPosition(mapInfo_.col_handle, MAP_COL_POS);
+
+	int frame_max_num = MV1GetFrameNum(mapInfo_.frame_clear_handle);
+	goal_pos_ = MV1GetFramePosition(mapInfo_.frame_clear_handle, frame_max_num - 1);
+	field_dist_ = CMyMath::GetDistance(VGet(0.0f, 0.0f, 0.0f), goal_pos_);
 }
 
 
 //ステップ
 void CRoad::Step()
 {
-	
+	VECTOR player_pos = CPlayerManager::GetInstance()->GetPlayer()->GetPosition();
+	float dist = CMyMath::GetDistance(player_pos, goal_pos_);
+
+	percent_ = 100 - dist / field_dist_ * 100 ;
 }
 
 
@@ -86,8 +95,11 @@ void CRoad::Update()
 
 //描画
 void CRoad::Draw()
-{
+{	
+
 	MV1DrawModel(mapInfo_.handle);
+	DrawFormatString(10, 30, GetColor(255, 255, 255), "パーセント = %d", percent_);
+
 }
 
 
