@@ -37,4 +37,5 @@ private:
 	float					field_dist_;
 	VECTOR					goal_pos_;
 	int						percent_;
+	int						old_percent_;
 };

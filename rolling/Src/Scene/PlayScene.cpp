@@ -12,7 +12,7 @@
 #include "../MyMath/MyMath.h"
 #include "../Collision/Collision.h"
 #include "../Collision/CollisionManager.h"
-
+#include "../Score/scoreManager.h"
 
 CPlayScene::CPlayScene()
 {
@@ -38,13 +38,11 @@ void CPlayScene::Init()
 	//マネージャー初期化
 	player_manager->Init();
 
+	//スコア管理初期化
+	CScoreManager::CreateInstance();
+	CScoreManager* score_manager = CScoreManager::GetInstance();
 
-	
-	
-
-	////アニメーション初期化
-	//CAnim3D::Init;
-
+	score_manager->Init();
 
 	//フィールド管理初期化
 	CFieldManager::CreateInstance();
@@ -102,6 +100,8 @@ void CPlayScene::Load()
 {	
 	//フィールド管理読み込み
 	CFieldManager::GetInstance()->Load();
+
+	CScoreManager::GetInstance()->Load();
 
 	//プレイヤー管理読み込み
 	CPlayerManager::GetInstance()->Load();
@@ -168,6 +168,8 @@ void CPlayScene::Step()
 	//更新
 	//プレイヤー管理の更新
 	CPlayerManager::GetInstance()->Update();
+
+	CScoreManager::GetInstance()->Update();
 
 	
 
@@ -246,7 +248,7 @@ void CPlayScene::Draw()
 	//フィールド管理描画
 	CFieldManager::GetInstance()->Draw();
 
-	
+	CScoreManager::GetInstance()->Draw();
 
 	//プレイヤー管理描画
 	CPlayerManager::GetInstance()->Draw();
@@ -279,6 +281,10 @@ void CPlayScene::Fin()
 	field_manager->Delete();
 	field_manager->Fin();
 	CFieldManager::DeleteInstance();
+
+	CScoreManager* score_manager = CScoreManager::GetInstance();
+	score_manager->Fin();
+	CScoreManager::DeleteInstance();
 
 	//エネミー管理の後処理
 	CEnemyManager* enemy_manager = CEnemyManager::GetInstance();

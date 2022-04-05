@@ -5,6 +5,7 @@
 #include "../../MyMath/MyMath.h"
 #include "../../Player/PlayerManager.h"
 #include "../../Collision/Collision.h"
+#include "../../Score/scoreManager.h"
 
 namespace
 {
@@ -80,6 +81,8 @@ void CRoad::Step()
 	float dist = CMyMath::GetDistance(player_pos, goal_pos_);
 
 	percent_ = 100 - dist / field_dist_ * 100 ;
+
+	CScoreManager::GetInstance()->SetScore(percent_);
 }
 
 
@@ -98,7 +101,7 @@ void CRoad::Draw()
 {	
 
 	MV1DrawModel(mapInfo_.handle);
-	DrawFormatString(10, 30, GetColor(255, 255, 255), "パーセント = %d", percent_);
+	//DrawFormatString(10, 30, GetColor(255, 255, 255), "パーセント = %d", percent_);
 
 }
 
