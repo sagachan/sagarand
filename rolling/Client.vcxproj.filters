@@ -64,6 +64,9 @@
     <Filter Include="Src\Field\Sky">
       <UniqueIdentifier>{70d6e959-41cb-48ca-af21-a43fdc9117b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Score">
+      <UniqueIdentifier>{8fe578a9-03c1-4960-836f-986b97ecd28e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Camera\CameraManager.cpp">
@@ -161,6 +164,12 @@
     </ClCompile>
     <ClCompile Include="Src\Field\Sky\Sky.cpp">
       <Filter>Src\Field\Sky</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Score\scoreManager.cpp">
+      <Filter>Src\Score</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Score\score.cpp">
+      <Filter>Src\Score</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +277,12 @@
     </ClInclude>
     <ClInclude Include="Src\Field\Sky\Sky.h">
       <Filter>Src\Field\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Score\scoreManager.h">
+      <Filter>Src\Score</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Score\score.h">
+      <Filter>Src\Score</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

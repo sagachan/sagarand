@@ -46,6 +46,8 @@
     <ClCompile Include="Src\Scene\SceneBase.cpp" />
     <ClCompile Include="Src\Scene\SceneManager.cpp" />
     <ClCompile Include="Src\Scene\TitleScene.cpp" />
+    <ClCompile Include="Src\Score\score.cpp" />
+    <ClCompile Include="Src\Score\scoreManager.cpp" />
     <ClCompile Include="Src\Sound\Sound.cpp" />
     <ClCompile Include="Src\UI\GameUI.cpp" />
     <ClCompile Include="Src\UI\GameUIButton.cpp" />
@@ -83,6 +85,8 @@
     <ClInclude Include="Src\Scene\SceneBase.h" />
     <ClInclude Include="Src\Scene\SceneManager.h" />
     <ClInclude Include="Src\Scene\TitleScene.h" />
+    <ClInclude Include="Src\Score\score.h" />
+    <ClInclude Include="Src\Score\scoreManager.h" />
     <ClInclude Include="Src\Sound\Sound.h" />
     <ClInclude Include="Src\UI\GameUI.h" />
     <ClInclude Include="Src\UI\GameUIButton.h" />
